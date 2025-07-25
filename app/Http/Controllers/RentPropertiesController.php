@@ -79,7 +79,7 @@ class RentPropertiesController extends Controller
         $request->validate([
             'seller_name' => 'required',
             'seller_contact' => 'required',
-            'seller_cnic' => 'required',
+            'seller_cnic' => 'nullable',
             'prop_title' => 'required',
             'prop_area' => 'required',
             'prop_loc' => 'required',
@@ -202,7 +202,7 @@ class RentPropertiesController extends Controller
 
 
         if (!$property) {
-            return response()->json(['message' => 'Property not found'], 404);
+            return redirect()->back()->with('error', 'Property Not Found');
         }
 
         if (request()->expectsJson()) {

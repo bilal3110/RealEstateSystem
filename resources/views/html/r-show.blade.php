@@ -168,7 +168,7 @@
                                                             $imageCount =
                                                                 !empty($images) && is_array($images)
                                                                     ? count($images)
-                                                                    : 1; // Default to 1 if no images
+                                                                    : 1; 
                                                         @endphp
 
                                                         @if ($imageCount > 0)

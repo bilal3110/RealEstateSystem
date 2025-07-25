@@ -18,7 +18,7 @@ class SaleController extends Controller
         $request->validate([
             'seller_name' => 'required',
             'seller_contact' => 'required',
-            'seller_cnic' => 'required',
+            'seller_cnic' => 'nullable',
             'prop_title' => 'required',
             'prop_area' => 'required',
             'prop_loc' => 'required',
