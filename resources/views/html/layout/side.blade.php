@@ -2,7 +2,7 @@
     <div class="app-brand demo">
         <a href="{{route('analytics')}}" class="app-brand-link">
             <span class="app-brand-logo demo">
-                <img width="65px" src="{{ asset('storage/' . $business->logo) }}" alt="">
+                <img width="65px" src="{{ Storage::url($business->logo) }}" alt="">
             </span>
         </a>
 

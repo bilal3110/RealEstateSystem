@@ -8,7 +8,7 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-  <title>Dashboard - Analytics | {{$business->company_name}}</title>
+  <title>Dashboard - ZameenDesk | {{$business->company_name}}</title>
 
   <meta name="description" content="" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -43,4 +43,3 @@
 <script src="{{ asset('assets/js/config.js') }}"></script>
 
 </head>
-
