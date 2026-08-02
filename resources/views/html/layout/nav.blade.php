@@ -10,7 +10,7 @@
                             <!-- User Name -->
                             <div class="navbar-nav align-items-center">
                                 <div class="nav-item d-flex align-items-center">
-                                    <small style="font-size: 18px; font-weight: 700;">{{ $business->company_name }}</small>
+                                    <small style="font-size: 18px; font-weight: 700;">{{ $business->company_name ?? 'Default Company' }}</small>
                                 </div>
                             </div>
                             <!-- /User Name-->
@@ -22,7 +22,7 @@
                                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                                         data-bs-toggle="dropdown">
                                         <div class="avatar avatar-online">
-                                            <img src="{{ asset('storage/' . $business->logo) }}" alt
+                                            <img src="{{ asset('storage/' . $business->logo)}}" alt
                                                 class="w-px-40 h-auto rounded-circle" />
                                         </div>
                                     </a>

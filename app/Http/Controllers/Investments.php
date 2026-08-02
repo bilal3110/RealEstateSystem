@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\InvestDisposed;
 use App\Models\Investment;
 use Illuminate\Http\Request;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 
 class Investments extends Controller
 {
@@ -180,67 +180,13 @@ class Investments extends Controller
         return response()->json(['message' => 'All Sale Process Destroyed Successfully']);
     }
 
-    // Investment Disposed
-
-    // public function investDisposed(Request $request, $id)
-    // {
-    //     $investment = Investment::where('invest_id', $id)->first();
-
-    //     if (!$investment) {
-    //         return redirect()->back()->with('error','No Data Found');
-    //     }
-
-    //     $request->validate([
-    //         'investment_id' => 'required|exists:investment,invest_id',
-    //         'buyer_name' => 'required|string|max:255',
-    //         'buyer_contact' => 'required|string|max:20',
-    //         'buyer_cnic' => 'required|string|max:15',
-    //         'sell_price' => 'required|numeric|min:0',
-    //         'advance' => 'required|numeric|min:0',
-    //         'agreement' => 'nullable|string',
-    //     ]);
-
-    //     $buyingPrice = (double) str_replace(',', '', $investment->buying_price);
-    //     $myEquity = (double) $investment->my_equity;
-
-    //     $my_profit = ($request->sell_price - $buyingPrice) * ($myEquity / 100);
-
-    //     $disposed = new InvestDisposed();
-    //     $disposed->investment_id = $investment->invest_id;
-    //     $disposed->buyer_name = $request->buyer_name;
-    //     $disposed->buyer_contact = $request->buyer_contact;
-    //     $disposed->buyer_cnic = $request->buyer_cnic;
-    //     $disposed->sell_price = $request->sell_price;
-    //     $disposed->advance = $request->advance;
-    //     $disposed->profit = round($my_profit, 2);
-    //     $disposed->agreement = $request->agreement ?? null;
-    //     $disposed->save();
-
-    //     Investment::where('invest_id', $investment->invest_id)->update(['is_sold' => true]);
-
-    //     // \Log::info("After Processing:", [
-    //     //     'invest_id' => $investment->invest_id,
-    //     //     'buying_price' => $buyingPrice,
-    //     //     'my_equity' => $myEquity,
-    //     //     'profit' => $my_profit
-    //     // ]);
-
-    //     return redirect()->route('investDisposedShow')->with('success','Investment Disposed Successfully');
-    //     // return response()->json([
-    //     //     'message' => 'Investment Disposed Successfully',
-    //     //     'data' => $disposed
-    //     // ]);
-    // }
-
     public function investDisposed(Request $request, $id)
     {
-        // Sanitize inputs before validation
         $request->merge([
             'sell_price' => str_replace(',', '', $request->sell_price),
             'advance' => str_replace(',', '', $request->advance),
         ]);
 
-        // Run validation
         $request->validate([
             'investment_id' => 'required|exists:investment,invest_id',
             'buyer_name' => 'required|string|max:255',
@@ -283,9 +229,6 @@ class Investments extends Controller
         $disposed = InvestDisposed::latest()->paginate(10);
 
         return view('html.disposed', compact('disposed'));
-        // return response()->json([
-        //     'data' => $disposed
-        // ]);
     }
 
     public function investDisposedShowSingle($id)

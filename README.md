@@ -71,16 +71,7 @@ php artisan key:generate
 php artisan migrate --seed
 ```
 
-### 7. Storage Link (Crucial for Images)
-To display uploaded images, create a symbolic link from `public/storage` to `storage/app/public`:
-```bash
-# If public/storage already exists as a folder, delete it first
-rm -rf public/storage
-# Then run
-php artisan storage:link
-```
-
-### 8. Run the Application
+### 7. Run the Application
 ```bash
 # Compile assets
 npm run dev

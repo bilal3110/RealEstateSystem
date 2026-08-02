@@ -62,7 +62,7 @@ class SaleController extends Controller
             $query->where('seller_cnic', 'LIKE', '%' . $search . '%')
             ->orWhere('seller_contact', 'LIKE', '%' . $search . '%')
             ->orWhere('seller_name', 'LIKE', '%' . $search . '%')
-            ->orWhere('prop_area', $search)            
+            ->orWhere('prop_area', $search)
             ->orWhere('prop_loc', 'LIKE', '%' . $search . '%')
             ->orWhere('demand', 'LIKE', '%' . $search . '%');
         }
@@ -97,7 +97,7 @@ class SaleController extends Controller
             'demand' => 'required|numeric',
             'prop_desc' => 'nullable|string',
         ]);
-        
+
         $saleProperties = SaleProperties::find($id);
         if (!SaleProperties::find($id)) {
             return redirect()->back()->with('error','Property Not Found');
@@ -130,7 +130,7 @@ class SaleController extends Controller
         $saleProperties->demand = str_replace(',','',$request->demand);
         $saleProperties->prop_desc = $request->prop_desc;
         $saleProperties->save();
-        
+
         return redirect()->back()->with('success','Property updated successfully');
 
     }
@@ -144,8 +144,6 @@ class SaleController extends Controller
         $saleProperties->delete();
         return redirect()->back()->with('success','Property Deleted Successfully');
     }
-
-    // Sale Process 
 
     public function saleProcess(Request $request,$id)
     {
@@ -242,7 +240,7 @@ class SaleController extends Controller
             $query->where('landlord_cnic', 'LIKE', '%' . $search . '%')
                 ->orWhere('landlord_contact', 'LIKE', '%' . $search . '%')
                 ->orWhere('landlord_name', 'LIKE', '%' . $search . '%')
-                ->orWhere('prop_area', $search)                
+                ->orWhere('prop_area', $search)
                 ->orWhere('prop_loc', 'LIKE', '%' . $search . '%')
                 ->orWhere('prop_price', 'LIKE', '%' . $search . '%')
                 ->orWhere('buyer_name','LIKE','%' . $search . '%')

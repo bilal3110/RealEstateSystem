@@ -14,8 +14,6 @@ use Illuminate\Http\Request;
 
 class RentPropertiesController extends Controller
 {
-    // MODEL: RentProperties.php
-
     public function index()
     {
         $d_rent = RentProcess::whereMonth('created_at', date('m'))
@@ -233,9 +231,6 @@ class RentPropertiesController extends Controller
         return view("html.rent", compact('rent', 'search'));
     }
 
-
-
-    // MODEL: RentProcess.php
     public function rentProcess(Request $request, $id)
     {
         $rent = RentProperties::where('seller_id', $id)->first();

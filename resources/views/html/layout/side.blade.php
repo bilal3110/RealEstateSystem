@@ -1,4 +1,4 @@
-<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="height: auto">
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="height: 100vh">
     <div class="app-brand demo">
         <a href="{{route('analytics')}}" class="app-brand-link">
             <span class="app-brand-logo demo">
